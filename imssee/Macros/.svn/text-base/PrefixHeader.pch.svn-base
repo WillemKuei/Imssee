@@ -1,0 +1,49 @@
+//
+//  PrefixHeader.pch
+//  Homels
+//
+//  Created by 鑫易 on 14/12/23.
+//  Copyright (c) 2014年 鑫易. All rights reserved.
+//
+
+#ifndef Homels_PrefixHeader_pch
+#define Homels_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+/**
+ *  @desc 自定义宏
+ */
+#import "AppMacro.h"
+#import "GlobalMacro.h"
+#import "NotificationMacro.h"
+
+/**
+ *  @desc 第三方类库
+ */
+#import "AFNetworking.h"
+#import "JSON.h"
+#import "MBProgressHUD.h"
+#import "JSONKit.h"
+#import "MJRefresh.h"
+#import "UIImageView+AFNetworking.h"
+
+
+/**
+ *  @desc 自定义公共类
+ */
+#import "HttpRequest.h"
+#import "WGProgressHUD.h"
+#import "UIHelper.h"
+#import "GlobalFunction.h"
+#import "UserInfo.h"
+#import "ImsseeInstance.h"
+
+/**
+ *  @desc 自定义类别或延展
+ */
+#import "UIView+WGViewCategory.h"
+#import "WGSliderMenu.h"
+
+#endif

@@ -1,0 +1,39 @@
+//
+//  UserInfo.h
+//  imssee
+//
+//  Created by imsseeios3 on 15/2/28.
+//  Copyright (c) 2015年 鑫易. All rights reserved.
+//
+
+/**
+ *  @desc 该类主要是用户信息的单例
+ */
+
+#import <Foundation/Foundation.h>
+
+@interface UserInfo : NSObject
+
+@property (nonatomic, copy) NSString *birthDay;         //生日
+@property (nonatomic, copy) NSString *school;
+@property (nonatomic, assign) NSInteger sex;
+@property (nonatomic, copy) NSString *icon;
+@property (nonatomic, copy) NSString *images;
+@property (nonatomic, copy) NSString *levelName;
+@property (nonatomic, copy) NSString *workingTime;
+@property (nonatomic, copy) NSString *education;
+@property (nonatomic, assign) long level;
+@property (nonatomic, assign) long memberId;
+@property (nonatomic, assign) id community;
+@property (nonatomic, assign) long scId;
+@property (nonatomic, copy) NSString *intr;
+@property (nonatomic, copy) NSString *memberName;
+@property (nonatomic, assign) NSInteger isMaster;
+@property (nonatomic, copy) NSString *nickName;
+@property (nonatomic, copy) NSString *tell;
+@property (nonatomic, assign) NSUInteger age;
+@property (nonatomic, copy) NSString *userName;
+
++ (instancetype)shareInstance:(NSDictionary *)params;
+
+@end

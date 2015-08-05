@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageMainViewController">
+            <connections>
+                <outlet property="tableView" destination="Pfy-BY-2Nd" id="syx-LS-yx3"/>
+                <outlet property="view" destination="iN0-l3-epB" id="pSx-HB-NYx"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Pfy-BY-2Nd">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="h6i-fd-7DO"/>
+                        <outlet property="delegate" destination="-1" id="Dxw-Bj-2Ao"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Pfy-BY-2Nd" secondAttribute="trailing" id="PE6-Ae-wXg"/>
+                <constraint firstItem="Pfy-BY-2Nd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="jOk-2f-Tx4">
+                    <variation key="heightClass=regular-widthClass=compact" constant="64"/>
+                </constraint>
+                <constraint firstItem="Pfy-BY-2Nd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rFp-GM-TVV"/>
+                <constraint firstAttribute="bottom" secondItem="Pfy-BY-2Nd" secondAttribute="bottom" constant="49" id="t29-iK-lgO">
+                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Pfy-BY-2Nd"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="PE6-Ae-wXg"/>
+                    <exclude reference="jOk-2f-Tx4"/>
+                    <exclude reference="rFp-GM-TVV"/>
+                    <exclude reference="t29-iK-lgO"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Pfy-BY-2Nd"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="PE6-Ae-wXg"/>
+                    <include reference="jOk-2f-Tx4"/>
+                    <include reference="rFp-GM-TVV"/>
+                    <include reference="t29-iK-lgO"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="354" y="157"/>
+        </view>
+    </objects>
+</document>

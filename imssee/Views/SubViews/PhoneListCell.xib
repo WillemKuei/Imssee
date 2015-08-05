@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhoneCell" id="KGk-i7-Jjw" customClass="PhoneListCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCP-Hu-A6w">
+                        <rect key="frame" x="8" y="12" width="80" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="Fyl-Wx-DVL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                            <constraint firstAttribute="height" constant="21" id="YWl-4U-MK9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Fyl-Wx-DVL"/>
+                                <exclude reference="YWl-4U-MK9"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Fyl-Wx-DVL"/>
+                                <include reference="YWl-4U-MK9"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="张三里斯" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOW-da-xZA">
+                        <rect key="frame" x="96" y="14" width="59" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Jh3-T2-A9C"/>
+                            <constraint firstAttribute="width" constant="90" id="zDi-lK-EsC">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Jh3-T2-A9C"/>
+                                <exclude reference="zDi-lK-EsC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Jh3-T2-A9C"/>
+                                <include reference="zDi-lK-EsC"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="15215421545" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sId-PF-3of">
+                        <rect key="frame" x="173" y="14" width="42" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="1fg-H6-Ru7">
+                                <variation key="heightClass=regular-widthClass=compact" constant="90"/>
+                            </constraint>
+                            <constraint firstAttribute="height" constant="21" id="7Cf-9n-8fe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1fg-H6-Ru7"/>
+                                <exclude reference="7Cf-9n-8fe"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="1fg-H6-Ru7"/>
+                                <include reference="7Cf-9n-8fe"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r5o-G8-Cfb">
+                        <rect key="frame" x="252" y="10" width="46" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="4ep-ir-cOz"/>
+                            <constraint firstAttribute="width" constant="30" id="mZ1-Bv-Qsh"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="phone2.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4ep-ir-cOz"/>
+                                <exclude reference="mZ1-Bv-Qsh"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="4ep-ir-cOz"/>
+                                <include reference="mZ1-Bv-Qsh"/>
+                            </mask>
+                        </variation>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="r5o-G8-Cfb" secondAttribute="trailing" constant="8" id="0sx-B6-egb">
+                        <variation key="heightClass=regular-widthClass=compact" constant="-8"/>
+                    </constraint>
+                    <constraint firstItem="uOW-da-xZA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="3Xm-OG-vq9"/>
+                    <constraint firstItem="uOW-da-xZA" firstAttribute="leading" secondItem="WCP-Hu-A6w" secondAttribute="trailing" id="AEd-bD-q6j">
+                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                    </constraint>
+                    <constraint firstItem="sId-PF-3of" firstAttribute="leading" secondItem="uOW-da-xZA" secondAttribute="trailing" constant="4" id="NVW-6d-Bbb">
+                        <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                    </constraint>
+                    <constraint firstItem="sId-PF-3of" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="QLk-2P-eoc"/>
+                    <constraint firstItem="r5o-G8-Cfb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="XG2-mp-Z4J">
+                        <variation key="heightClass=regular-widthClass=compact" constant="-1"/>
+                    </constraint>
+                    <constraint firstItem="WCP-Hu-A6w" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="Yx5-jH-U8X"/>
+                    <constraint firstItem="WCP-Hu-A6w" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="a6L-l8-XkF">
+                        <variation key="heightClass=regular-widthClass=compact" constant="-8"/>
+                    </constraint>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="Yx5-jH-U8X"/>
+                        <exclude reference="a6L-l8-XkF"/>
+                        <exclude reference="3Xm-OG-vq9"/>
+                        <exclude reference="AEd-bD-q6j"/>
+                        <exclude reference="NVW-6d-Bbb"/>
+                        <exclude reference="QLk-2P-eoc"/>
+                        <exclude reference="0sx-B6-egb"/>
+                        <exclude reference="XG2-mp-Z4J"/>
+                    </mask>
+                </variation>
+                <variation key="heightClass=regular-widthClass=compact">
+                    <mask key="constraints">
+                        <include reference="Yx5-jH-U8X"/>
+                        <include reference="a6L-l8-XkF"/>
+                        <include reference="3Xm-OG-vq9"/>
+                        <include reference="AEd-bD-q6j"/>
+                        <include reference="NVW-6d-Bbb"/>
+                        <include reference="QLk-2P-eoc"/>
+                        <include reference="0sx-B6-egb"/>
+                        <include reference="XG2-mp-Z4J"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLable" destination="uOW-da-xZA" id="xsh-Ft-af4"/>
+                <outlet property="phoneBtn" destination="r5o-G8-Cfb" id="D4r-Vd-dNs"/>
+                <outlet property="phoneNumberLable" destination="sId-PF-3of" id="jCE-6u-bvm"/>
+                <outlet property="sectionLable" destination="WCP-Hu-A6w" id="yxZ-Yf-N0J"/>
+            </connections>
+            <point key="canvasLocation" x="203" y="466"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="phone2.png" width="30" height="30"/>
+    </resources>
+</document>

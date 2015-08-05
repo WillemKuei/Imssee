@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>内容详情--社缘</title>
+<link rel="stylesheet" href="../../css/themes/default/jquery.mobile-1.4.3.min.css">
+<link rel="stylesheet" href="../../css/jqm-dlns.css">
+
+<script type="text/javascript" src="../../js/common/cordova.js"></script>
+<script type="text/javascript" src="../../js/MyPlugin.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/common/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/common/jquery.mobile-1.4.3.js"></script>
+
+</head>
+
+<script type="text/javascript" charset="utf-8">
+    var isMaster;
+    var authorId;
+    var newsId;
+    var isLike="0";
+    var likeNumber = 0;
+    function loadNewsDetailData(){
+        MyIOSPlugin.nativeFunction("request",
+                                   ['newsDetail_J.jspx'],
+                                   function(result){
+                                       newsId = result.newsId;
+                                       //标题
+                                       $("#title").html(result.title);
+                                       //发表时间
+                                       $("#createTime").html(result.creatTime);
+                                       //发布人
+                                       $("#author").html(result.user.userName);
+                                       isMaster = result.user.isMaster;
+                                       authorId = result.user.memberid;
+                                       if(isMaster == '1'){
+                                           $("#author").css("color","#7b7a7a");
+                                       }
+                                       //浏览量
+                                       $("#scanStr").html("浏览量:"+result.browseNumber);
+                                       //内容
+                                       $("#content").html(result.context);
+                                       //评论数
+                                       $("#commentCount").html("（" + result.commentNumber + "）");
+                                       //是否已赞
+                                       isLike = result.isLike;
+                                       likeNumber = result.likeNumber;
+                                       if(isLike == '1'){      //已赞
+                                       $("#praiseStr").html('已赞（'+likeNumber+'）');
+                                       $("#praiseImg").attr("src","../../img/yizan.png");
+                                       $("#praiseStr").css("color","#F00");
+                                       
+                                       } else {
+                                       $("#praiseStr").html("点赞（"+likeNumber+"）");
+                                       $("#praiseImg").attr("src","../../img/nozan.png");
+                                       $("#praiseStr").css("color","#7b7a7a");
+                                       }
+                                       // 加载多张图片
+                                       var html = "";
+                                       var images;
+                                       if (result.imagePath != null&&result.imagePath != "") {
+                                       if (result.imagePath != null) {
+                                       images = result.imagePath.split(",");
+                                       }
+                                       //alert("-->"+$(window).width());
+                                       if (images != null) {
+                                       var width='width="100%"';
+                                       var height='';
+                                       var style='';
+                                       if(images.length==1){
+                                       width='width='+($(window).width()-32)+'"px"';
+                                       height='height='+($(window).width()-32)+'"px"';
+                                       style='width:'+($(window).width()-32)+'px;height:'+($(window).width()-32)+'px;overflow:hidden;';
+                                       }else if(images.length==2){
+                                       width='width='+(($(window).width()-36)/2.0)+'"px"';
+                                       height='height='+(($(window).width()-36)/2.0)+'"px"';
+                                       style='style="margin-left:3px;"';
+                                       }else if(images.length==3){
+                                       width='width='+(($(window).width()-40)/3.0)+'"px"';
+                                       height='height='+(($(window).width()-40)/3.0)+'"px"';
+                                       style='style="margin-left:3px;"';
+                                       }else if(images.length==4){
+                                       width='width='+(($(window).width()-36)/2.0)+'"px"';
+                                       height='height='+(($(window).width()-36)/2.0)+'"px"';
+                                       style='style="margin-left:3px;"';
+                                       }else if(images.length==5){
+                                       width='width='+(($(window).width()-40)/3.0)+'"px"';
+                                       height='height='+(($(window).width()-4032)/3.0)+'"px"';
+                                       style='style="margin-left:3px;"';
+                                       }else if(images.length==6){
+                                       width='width='+(($(window).width()-40)/3.0)+'"px"';
+                                       height='height='+(($(window).width()-40)/3.0)+'"px"';
+                                       style='style="margin-left:3px;"';
+                                       }
+                                       
+                                       for ( var int = 0; int < images.length; int++) {
+                                       if(int.length == 0){
+                                       html += '<div style="'+style+'"><img class="img" src="http://192.168.1.100:8080'+images[int]+'"  id="image"  /></div>';
+                                       }
+                                       
+                                       html += '<img class="img" src="http://192.168.1.100:8080'
+                                       + images[int]
+                                       + '" alt="加载图片" id="image" '+width+' '+height+' '+(int==0?"":images.length==4?(int==images.length/2?"":style):(int==3?"":style))+'>';
+                                       }
+                                       }
+                                       }
+                                       $("#preview").html(html);
+                                   
+                                       //评论列表
+                                       fillTableList(result.comments);
+                                   },
+                                   function(error){
+                                        MyIOSPlugin.nativeFunction("alert",[error,'温馨提示','OK']);
+                                   });
+    }
+
+    //评论列表
+    function fillTableList(data) {
+        console.log(data);
+        if (data.length > 0) {
+            var html = "";
+            $.each(data,function() {
+                   if (!this.user.icon || this.user.icon == null||this.user.icon==''||this.user.icon=="null") { // 后台没有头像返回读取本地
+                   html = html
+                   + "<tbody commentid='&quot; + this.commentId +&quot;'><tr><td rowspan='2' valign='top' width='20%' align='center' class='nd-tabLeft'><img src='http://192.168.1.100:8080/mobile/upload/LOGOimg.jpg'/></td><td valign='top' width='80%' class='nd-tabRight'>"
+                   + "<a name='"+this.user.memberid+"' class='nickName' href='#'>"+this.user.userName+"</a>"
+                   + "</td></tr><tr><td class='nd-tabContext'>"
+                   + this.context
+                   + "</td></tr></tbody>";
+                   } else {
+                   html = html
+                   + "<tbody commentid='&quot; + this.commentId +&quot;'><tr><td rowspan='2' valign='top' width='20%' align='center' class='nd-tabLeft'><img src='http://192.168.1.100:8080/mobile/"+ this.user.icon+ "' /></td><td valign='top' width='80%' class='nd-tabRight'>"
+                   + "<a name='"+this.user.memberid+"' class='nickName' href='#'>"+this.user.userName+"</a>"
+                   + "</td></tr><tr><td class='nd-tabContext'>"
+                   + this.context
+                   + "</td></tr></tbody>";
+                   }
+                   
+                   });
+                   $("#commentList").html(html);
+                   clickNickName();
+        }
+    }
+
+    //点赞
+    function praiseBtnClick(){
+        //$.mbank.showLoading();
+        var ps = $("#praiseStr").text();
+        var isCancel = '0';
+        if(isLike=="0"){
+            likeNumber++;
+            $("#praiseStr").html('已赞（'+likeNumber+'）');
+            $("#praiseStr").css("color","#F00");
+            $("#praiseImg").attr("src","../../img/yizan.png");
+            isCancel = '0';
+            isLike="1";
+        }else if(isLike=="1"){
+            likeNumber--;
+            $("#praiseStr").html('点赞（'+likeNumber+'）');
+            $("#praiseStr").css("color","#7b7a7a");
+            $("#praiseImg").attr("src","../../img/nozan.png");
+            isCancel = '1';
+            isLike="0";
+        }
+        
+        var reqData = {
+            "newsId":newsId,
+            "isCancle":isCancel
+        }
+        
+        MyIOSPlugin.nativeFunction("request",
+                                   ['praiseNews_J.jspx',reqData],
+                                   function success(result){
+                                   alert(result);
+                                   },
+                                   function faile(error){
+                                   alert(error);
+                                   });
+    }
+
+    //查看作者个人空间
+    function authorClick(){
+        alert("查看作者的个人空间"+authorId);
+    }
+
+    //点击评论者昵称
+    function clickNickName(){
+        $(".nickName").off().on("click",function(){
+            var memberId = this.name;
+            alert("查看评论者的个人空间"+memberId);
+    })};
+
+    //查看评论
+    function checkCommentList() {
+        //alert("评论正在研发中，请稍后!");
+        var title = $("#title").text();
+        MyIOSPlugin.nativeFunction("goPage",
+                                   ['commentList',newsId,title],
+                                   null,
+                                   null);
+    }
+</script>
+
+<body onload="loadNewsDetailData()">
+	<div data-role="page" id="newsDetailView" data-theme="none">
+		<div data-role="content" class="nd-content">
+			<div class="nd-fram">
+				<!-- 标题 -->
+				<div class="nd-framDIV nd-title">
+					<h3>
+						<span id="title"></span>
+					</h3>
+				</div>
+				<!-- 时间 发布人 -->
+				<div class="nd-framDIV nd-bj">
+					<div class="nd-bjL">
+						<span class="nd-time" id="createTime"></span> <span
+							class="nd-issuer"> 发布人：&nbsp;<a href="#" id="author" onclick="authorClick()"></a>
+						</span>
+					</div>
+					<div class="nd-browse" id="scanStr">浏览量：0</div>
+					<div class="clear"></div>
+
+				</div>
+				<!-- 内容 -->
+				<div class="nd-framDIV nd-border_bottom">
+					<!-- 图片 -->
+					<div class="nd-img" id="preview"></div>
+
+					<!-- 正文 -->
+					<div id="contentDiv" class="nd-body">
+						<div id="content"></div>
+					</div>
+				</div>
+			</div>
+			<div class="nd-splendid">
+				<span>更多精彩内容，敬请关注社缘公众号：</span> <img src="../../img/imssee.png">
+			</div>
+			<!-- 浏览量 点赞 评论 -->
+			<div data-tap-toggle="false" class="nd-nav">
+				<ul>
+					<li></li>
+					<li><a href="#" id="praiseBtn" onclick="praiseBtnClick()">
+							<div class="nd-praiseLeft">
+								<img id="praiseImg" class="nd-praiseImg"
+									src="../../img/nozan.png">
+							</div>
+							<div class="nd-praiseRight">
+								<span id="praiseStr">点赞</span>
+							</div>
+							<div class="clear"></div> </a></li>
+					<li><a href="#" id="commentBtn" onclick="checkCommentList()">
+							<div class="nd-commentLeft">
+								<img id="praiseImg" class="nd-commentImg"
+									src="../../img/comment.png">
+							</div>
+							<div class="nd-commentRight">
+								<span>评论</span> <span id="commentCount">（0）</span>
+							</div>
+							<div class="clear"></div> </a></li>
+					<div class="clear"></div>
+					<div class="nd-border"></div>
+				</ul>
+			</div>
+
+			<!-- 最新评论 -->
+			<div class="nd-comment">
+				<table id="commentList" cellpadding="0" cellspacing="0">
+
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

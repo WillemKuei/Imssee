@@ -1,0 +1,53 @@
+//
+//  JuWeiNewsViewController.m
+//  imssee
+//
+//  Created by app001.cn on 15-2-14.
+//  Copyright (c) 2015年 鑫易. All rights reserved.
+//
+
+#import "JuWeiNewsViewController.h"
+#import "JuWeiListCell.h"
+
+@interface JuWeiNewsViewController ()
+
+@end
+
+@implementation JuWeiNewsViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *indentifer = @"Cell";
+    JuWeiListCell *cell = [tableView dequeueReusableCellWithIdentifier:indentifer];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"JuWeiListCell" owner:nil options:nil] lastObject];
+    }
+    [cell.imgView setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"nav_db"]];
+    [GlobalFunction radiusImageView:cell.imgView radius:5];
+    cell.titleLable.text = @"居委／街道";
+    cell.subTitleLable.text = @"回应是否公审，该怎么判就怎么判";
+    cell.timeLable.text = @"2015-02-22";
+    return cell;
+}
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end

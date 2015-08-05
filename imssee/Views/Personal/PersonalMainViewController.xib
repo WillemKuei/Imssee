@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalMainViewController">
+            <connections>
+                <outlet property="tableView" destination="Dfm-Cr-E68" id="2JB-zD-Tfp"/>
+                <outlet property="view" destination="iN0-l3-epB" id="hcK-vr-AEO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Dfm-Cr-E68">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="cvi-Dz-Phg"/>
+                        <outlet property="delegate" destination="-1" id="UiB-ma-J1U"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Dfm-Cr-E68" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="PCZ-ov-ejC"/>
+                <constraint firstAttribute="trailing" secondItem="Dfm-Cr-E68" secondAttribute="trailing" id="c7s-MJ-MhS"/>
+                <constraint firstItem="Dfm-Cr-E68" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gCK-Wp-Imc"/>
+                <constraint firstAttribute="bottom" secondItem="Dfm-Cr-E68" secondAttribute="bottom" id="o9b-fp-ON5">
+                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="Dfm-Cr-E68"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="PCZ-ov-ejC"/>
+                    <exclude reference="c7s-MJ-MhS"/>
+                    <exclude reference="gCK-Wp-Imc"/>
+                    <exclude reference="o9b-fp-ON5"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="Dfm-Cr-E68"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="PCZ-ov-ejC"/>
+                    <include reference="c7s-MJ-MhS"/>
+                    <include reference="gCK-Wp-Imc"/>
+                    <include reference="o9b-fp-ON5"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="261" y="98"/>
+        </view>
+    </objects>
+</document>
